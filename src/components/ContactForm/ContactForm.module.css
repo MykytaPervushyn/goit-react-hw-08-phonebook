@@ -1,0 +1,36 @@
+.contactForm {
+  border: 1px solid black;
+  width: fit-content;
+}
+
+.formWrap {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 300px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.button {
+  max-width: 100px;
+  padding: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  border: 2px solid whitesmoke;
+  border-radius: 10%;
+}
+
+.button:hover,
+.button:focus {
+  color: white;
+  background-color: blue;
+}
