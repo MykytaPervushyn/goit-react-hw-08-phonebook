@@ -1,1 +1,1 @@
-# goit-react-hw-03-phonebook App
+# goit-react-hw-03-phonebook

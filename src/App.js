@@ -50,6 +50,27 @@ class App extends Component {
       contacts: prevState.contacts.filter(({ id }) => id !== contactId),
     }));
 
+  componentDidMount() {
+    console.log('App copmonent did mount')
+
+    const contacts = localStorage.getItem('contacts');
+    const parcedContacts = JSON.parse(contacts);
+
+    if (parcedContacts) {
+      this.setState({contacts: parcedContacts})
+    }
+  };
+  
+  componentDidUpdate(prevProps, prevState) {
+    console.log('App copmonent did update')
+
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Оновилося поле contacts')
+
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    }
+  };
+
   render() {
     const filtredContacts = this.getFiltredContacts();
     return (
