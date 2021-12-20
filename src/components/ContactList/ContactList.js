@@ -2,10 +2,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteContact } from '../../redux/contacts/actions';
+import { getFiltredContacts } from '../../redux/contacts/selectors';
 import s from './ContactList.module.css';
 
 const ContactList = () =>{
-  const contacts = useSelector(state => getFiltredContacts(state.contacts.contactsReducer, state.contacts.filter));
+  const contacts = useSelector(getFiltredContacts);
   const dispatch = useDispatch();
 
   return (
@@ -21,12 +22,6 @@ const ContactList = () =>{
     </ul>
   );
 }
-const getFiltredContacts = (allContacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-
-  return allContacts.filter((contact) =>
-    contact.payload.name.toLowerCase().includes(normalizedFilter));
-  };
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
