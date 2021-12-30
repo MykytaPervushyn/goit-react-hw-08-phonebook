@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contacts/actions';
-import { getContacts } from '../../redux/contacts/selectors';
+import { useCreateContactMutation } from '../../redux/contacts/contactsSlice';
 
-export default function ContactForm() {
+export default function ContactForm({contacts}) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const [createContact, {isLoading}] = useCreateContactMutation();
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -30,17 +27,18 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const contact = addContact({ name: name, number: number });
-
-    if (contacts.find(contact => contact.payload.name === name)) {
+    if (contacts.find(contact => contact.name === name)) {
       return alert(`${name} is already in contacts`) || reset();
-    } else if (contacts.find(contact => contact.payload.number === number)) {
+    } else if (contacts.find(contact => contact.number === number)) {
       return alert(`${number} is already in contacts`) || reset();
     }
     
-    dispatch(addContact(contact));
-    
+    createContact({
+      name: e.currentTarget.elements.name.value,
+      number: e.currentTarget.elements.number.value,
+    });
     reset();
+
   };
 
   const reset = () => {
@@ -81,8 +79,8 @@ export default function ContactForm() {
             />
           </label>
 
-          <button className={s.button} type="submit">
-            Add contact
+          <button className={s.button} type="submit" disabled={isLoading}>
+            {isLoading ? 'Loading...' : 'Add contact'}
           </button>
         </div>
       </form>
