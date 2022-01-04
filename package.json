@@ -1,5 +1,5 @@
 {
-  "name": "goit-react-hw-07-phonebook",
+  "name": "goit-react-hw-08-phonebook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -35,13 +35,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MykytaPervushyn/goit-react-hw-07-phonebook.git"
+    "url": "git+https://github.com/MykytaPervushyn/goit-react-hw-08-phonebook.git"
   },
   "author": "MykytaPervushyn",
   "bugs": {
-    "url": "https://github.com/MykytaPervushyn/goit-react-hw-07-phonebook/issues"
+    "url": "https://github.com/MykytaPervushyn/goit-react-hw-08-phonebook/issues"
   },
-  "homepage": "https://MykytaPervushyn.github.io/goit-react-hw-07-phonebook",
+  "homepage": "https://MykytaPervushyn.github.io/goit-react-hw-08-phonebook",
   "eslintConfig": {
     "extends": [
       "react-app",
