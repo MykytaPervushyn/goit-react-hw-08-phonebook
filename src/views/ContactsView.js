@@ -18,18 +18,6 @@ export default function ContactView(params) {
   useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
 
   return (
-    // <Container>
-    //   <div style={barStyles}>
-    //     <ContactForm />
-    //     <Filter />
-
-    //     {isLoadingContacts  && <h1>Loading...</h1>}
-    //   </div>
-
-    //   <ContactList />
-
-    // </Container>
-
     <main>
       <Container>
         <div className={s.container}>
