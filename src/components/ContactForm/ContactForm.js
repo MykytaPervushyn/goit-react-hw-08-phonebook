@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts } from 'redux/contacts/contacts-selectors';
+import contactsOperations from 'redux/contacts/contacts-operations';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
-import { useCreateContactMutation } from '../../redux/contacts/contactsSlice';
 
-export default function ContactForm({contacts}) {
+export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
-  const [createContact, {isLoading}] = useCreateContactMutation();
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const handleChange = e => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.target;
 
     switch (name) {
       case 'name':
@@ -33,10 +35,7 @@ export default function ContactForm({contacts}) {
       return alert(`${number} is already in contacts`) || reset();
     }
     
-    createContact({
-      name: e.currentTarget.elements.name.value,
-      number: e.currentTarget.elements.number.value,
-    });
+    dispatch(contactsOperations.addContact({ name, number }));
     reset();
 
   };
@@ -79,8 +78,8 @@ export default function ContactForm({contacts}) {
             />
           </label>
 
-          <button className={s.button} type="submit" disabled={isLoading}>
-            {isLoading ? 'Loading...' : 'Add contact'}
+          <button className={s.button} type="submit">
+            Add contact
           </button>
         </div>
       </form>
