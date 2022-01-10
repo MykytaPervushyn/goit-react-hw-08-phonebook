@@ -34,9 +34,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build",
+    "prepare": "husky install",
     "predeploy": "npm run build",
-    "prepare": "husky install"
+    "deploy": "netlify deploy -p"
   },
   "repository": {
     "type": "git",
@@ -46,7 +46,6 @@
   "bugs": {
     "url": "https://github.com/MykytaPervushyn/goit-react-hw-08-phonebook/issues"
   },
-  "homepage": "https://MykytaPervushyn.github.io/goit-react-hw-08-phonebook",
   "eslintConfig": {
     "extends": [
       "react-app",
