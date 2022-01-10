@@ -7,10 +7,6 @@ import Filter from '../components/Filter';
 import { contactsOperations, contactsSelectors } from '../redux/contacts';
 import s from './Views.module.css';
 
-const barStyles = {
-  marginBottom: 20,
-};
-
 export default function ContactView(params) {
   const dispatch = useDispatch();
   const isLoadingContacts  = useSelector(contactsSelectors.getLoading);
